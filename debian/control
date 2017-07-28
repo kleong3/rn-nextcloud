@@ -1,0 +1,90 @@
+Source: nextcloud
+Section: devel
+Priority: optional
+Maintainer: kleong3 <leong3@purdue.edu>
+Uploaders:
+ Joachim Bauch <bauch@struktur.de>,
+ Simon Eisenmann <simon@struktur.de>
+Build-Depends:
+ debhelper (>= 8.1.0~),
+ quilt
+Standards-Version: 3.9.6
+Homepage: https://nextcloud.com
+
+Package: nextcloud
+Architecture: all
+Depends:
+ ${misc:Depends},
+ nextcloud-server (= ${binary:Version}), readynasos(>=6.1.0)
+Recommends:
+ curl
+Suggests:
+ exim4 | mail-transport-agent,
+ libreoffice-writer,
+ mysql-server | mariadb-server,
+ smbclient
+Provides: nextcloud
+Description: The Nextcloud Server - Private file sync and share server
+ Nextcloud Server provides you a private file sync and share
+ cloud. Host this server to easily sync business or private documents
+ across all your devices, and share those documents with other users of
+ your Nextcloud server on their devices.
+ .
+ Nextcloud - A safe home for all your data!  nextcloud.com
+
+Package: nextcloud-server
+Architecture: all
+Pre-Depends:
+ ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ ${perl:Depends},
+ ca-certificates,
+ readynasos(>=6.1.0), git
+ cron,
+ nextcloud-migration,
+ nextcloud-server-php,
+ nextcloud-server-php7.0 (= ${binary:Version}), git
+Description: The Nextcloud server package
+ .
+ A complete Nextcloud server system install package.
+
+Package: nextcloud-server-php7.0
+Architecture: all
+Pre-Depends:
+ ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ php7.0-common,
+ php7.0-cli,
+ php7.0-curl,
+ php7.0-gd,
+ php7.0-intl,
+ php7.0-json,
+ php7.0-ldap,
+ php7.0-mbstring,
+ php7.0-mcrypt,
+ php7.0-sqlite | php7.0-sqlite3,
+ php7.0-xml,
+ php7.0-zip, readynasos(>=6.1.0), git
+Suggests:
+ php7.0-apcu,
+ php7.0-mysqlnd | php7.0-mysql,
+ php7.0-pgsql
+Provides: nextcloud-server-php
+Breaks: nextcloud-server-php
+Conflicts: nextcloud-server-php
+Replaces: nextcloud-server-php
+Description: PHP7.0 dependencies for Nextcloud
+ .
+ This is a dependency package for Nextcloud with PHP7.0.
+
+Package: nextcloud-occ
+Architecture: all
+Depends:
+ bash,
+ nextcloud-server (= ${binary:Version}),
+ ${misc:Depends}, readynasos (>=6.1.0), git
+Description: The Nextcloud commandline client
+ .
+ Provides system wide occ commandline client for Nextcloud.

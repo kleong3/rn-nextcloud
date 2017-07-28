@@ -1,0 +1,4 @@
+nextcloud: non-standard-toplevel-dir apps/
+nextcloud: file-in-unusual-dir apps/nextcloud/*
+nextcloud: script-not-executable apps/nextcloud/*
+nextcloud: executable-not-elf-or-scripts apps/nextcloud/*

@@ -1,0 +1,13 @@
+<Application resource-id="nextcloud"><!-- 'resource-id' must be AppName -->
+  <Name>nextcloud</Name>
+  <Author>kleong3</Author>
+  <Version>12.0.0</Version>
+  <RequireReboot>0</RequireReboot>
+  <ConfigURL/>
+  <LaunchURL>http://localhost/nextcloud</LaunchURL>
+  <ReservePort></ReservePort>
+  <InfoURL>http://nextcloud.com</InfoURL>
+  <DebianPackage>nextcloud</DebianPackage>
+  <ServiceName>fvapp-nextcloud.service</ServiceName>
+  <Description lang="en-us">Customizable download manager</Description>
+</Application>

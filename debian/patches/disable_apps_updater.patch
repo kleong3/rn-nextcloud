@@ -1,0 +1,11 @@
+--- a/settings/js/apps.js
++++ b/settings/js/apps.js
+@@ -132,7 +132,7 @@
+ 							OC.Settings.Apps.renderApp(app, template, null, false);
+ 						}
+ 
+-						if (app.update) {
++						if (app.update && false) {
+ 							var $update = $('#app-' + app.id + ' .update');
+ 							$update.removeClass('hidden');
+ 							$update.val(t('settings', 'Update to %s').replace(/%s/g, app.update));

@@ -1,0 +1,2 @@
+version=3
+https://download.nextcloud.com/server/releases/nextcloud-(.+)\.tar\.bz2

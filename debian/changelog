@@ -1,0 +1,227 @@
+nextcloud (12.0.0-1~strukturag+1) trusty; urgency=medium
+
+  * Improve patch to handle errors when adding user to group.
+
+ -- Joachim Bauch <bauch@struktur.de>  Wed, 21 Jun 2017 10:30:55 +0200
+
+nextcloud (12.0.0-1~strukturag+0) trusty; urgency=medium
+
+  * Use new upstream repository to mirror tags/branches.
+  * Imported Upstream version 12.0.0
+  * Updated patches for new upstream version.
+  * Depend on Nextcloud migration package.
+  * Added patch to fix page title (upstream issue #5374).
+
+ -- Joachim Bauch <bauch@struktur.de>  Wed, 14 Jun 2017 11:15:05 +0200
+
+nextcloud (11.0.3-1~strukturag+0) trusty; urgency=medium
+
+  * Imported Upstream version 11.0.3
+  * Updated patch for new upstream version.
+
+ -- Joachim Bauch <bauch@struktur.de>  Tue, 25 Apr 2017 08:40:21 +0200
+
+nextcloud (11.0.2-1~strukturag+1) trusty; urgency=medium
+
+  * Support downloads larger than 2GB.
+
+ -- Joachim Bauch <bauch@struktur.de>  Wed, 12 Apr 2017 09:18:56 +0200
+
+nextcloud (11.0.2-1~strukturag+0) trusty; urgency=medium
+
+  * Catch exceptions when adding users to groups and report as error to UI.
+  * Imported Upstream version 11.0.2
+  * Updated patch for new upstream version.
+
+ -- Joachim Bauch <bauch@struktur.de>  Tue, 28 Feb 2017 08:23:34 +0100
+
+nextcloud (11.0.1-1~strukturag+1) trusty; urgency=medium
+
+  * Added patch to flag cookies as "secure" for internal requests.
+
+ -- Joachim Bauch <bauch@struktur.de>  Mon, 13 Feb 2017 10:39:37 +0100
+
+nextcloud (11.0.1-1~strukturag+0) trusty; urgency=low
+
+  * Imported Upstream version 11.0.1
+  * Updated patches for new upstream version.
+  * Updated files to install for new upstream version.
+  * Nextcloud 11 no longer runs with php5, force to use php7.0
+  * Allow resolving symlinks, required for external storage (FS#4014).
+  * More dependencies required for Nextcloud 11.
+
+ -- Joachim Bauch <bauch@struktur.de>  Thu, 02 Feb 2017 09:41:00 +0100
+
+nextcloud (10.0.2-1~strukturag+0) trusty; urgency=medium
+
+  * Imported Upstream version 10.0.2
+  * Updated patches for new upstream version.
+
+ -- Joachim Bauch <bauch@struktur.de>  Mon, 12 Dec 2016 09:35:28 +0100
+
+nextcloud (10.0.1-1~strukturag+0) trusty; urgency=medium
+
+  * Imported Upstream version 10.0.1
+  * Remove obsolete patch as now in upstream
+  * Refresh patches for 10.0.1
+  * Remove new updater as packaging is used
+
+ -- Simon Eisenmann <simon@struktur.de>  Thu, 29 Sep 2016 11:11:44 +0200
+
+nextcloud (10.0.0-1~strukturag+6) trusty; urgency=medium
+
+  [ Leon Klingele ]
+  * Disable the 'Password Policy' checks for password reset via commandline
+
+  [ Simon Eisenmann ]
+
+ -- Simon Eisenmann <simon@struktur.de>  Tue, 20 Sep 2016 16:18:52 +0200
+
+nextcloud (10.0.0-1~strukturag+5) trusty; urgency=medium
+
+  [ Leon Klingele ]
+  * Default redirect URL on initial setup defaults to /spreedbox-setup/
+
+  [ Simon Eisenmann ]
+
+ -- Simon Eisenmann <simon@struktur.de>  Tue, 20 Sep 2016 09:23:13 +0200
+
+nextcloud (10.0.0-1~strukturag+4) trusty; urgency=medium
+
+  * Backport no read PATH_INFO
+
+ -- Simon Eisenmann <simon@struktur.de>  Thu, 15 Sep 2016 17:03:04 +0200
+
+nextcloud (10.0.0-1~strukturag+3) trusty; urgency=medium
+
+  * Not ship updatenotification app
+  * Fix MemAvailable Undefined Indexerror
+
+ -- Simon Eisenmann <simon@struktur.de>  Wed, 14 Sep 2016 17:00:54 +0200
+
+nextcloud (10.0.0-1~strukturag+2) trusty; urgency=medium
+
+  [ Joachim Bauch ]
+  * Remove old cron.d file (replaced in FS#3813).
+
+  [ Simon Eisenmann ]
+  * Add redirect support for setup
+
+ -- Simon Eisenmann <simon@struktur.de>  Tue, 13 Sep 2016 14:23:35 +0200
+
+nextcloud (10.0.0-1~strukturag+1) trusty; urgency=medium
+
+  * Fix name of cron.d file for php7.0 package (FS#3813).
+
+ -- Joachim Bauch <bauch@struktur.de>  Mon, 12 Sep 2016 17:27:59 +0200
+
+nextcloud (10.0.0-1~strukturag+0) trusty; urgency=medium
+
+  * Imported Upstream version 10.0.0
+  * Update patches for 10.0.0
+
+ -- Simon Eisenmann <simon@struktur.de>  Tue, 06 Sep 2016 16:10:40 +0200
+
+nextcloud (9.0.53-2~strukturag+4) trusty; urgency=medium
+
+  * Fixup PHP7.0 marker
+
+ -- Simon Eisenmann <simon@struktur.de>  Wed, 27 Jul 2016 18:08:41 +0200
+
+nextcloud (9.0.53-2~strukturag+3) trusty; urgency=medium
+
+  * Update cron conditions
+
+ -- Simon Eisenmann <simon@struktur.de>  Wed, 27 Jul 2016 18:01:25 +0200
+
+nextcloud (9.0.53-2~strukturag+2) trusty; urgency=medium
+
+  * Fix PHP7 dependencies
+
+ -- Simon Eisenmann <simon@struktur.de>  Wed, 27 Jul 2016 17:37:23 +0200
+
+nextcloud (9.0.53-2~strukturag+1) trusty; urgency=medium
+
+  * Update PR#549 backport
+  * Improve PHP5/PHP7.0 compatibility
+
+ -- Simon Eisenmann <simon@struktur.de>  Wed, 27 Jul 2016 17:29:48 +0200
+
+nextcloud (9.0.53-1~strukturag+3) trusty; urgency=medium
+
+  * Fix postinst
+
+ -- Simon Eisenmann <simon@struktur.de>  Thu, 21 Jul 2016 16:09:59 +0200
+
+nextcloud (9.0.53-1~strukturag+2) trusty; urgency=medium
+
+  * Set owership of our folders in postinst
+
+ -- Simon Eisenmann <simon@struktur.de>  Thu, 21 Jul 2016 15:36:33 +0200
+
+nextcloud (9.0.53-1~strukturag+1) trusty; urgency=medium
+
+  * Imported Upstream version 9.0.53
+
+ -- Simon Eisenmann <simon@struktur.de>  Wed, 20 Jul 2016 13:58:12 +0200
+
+nextcloud (9.0.52-1~strukturag+9) trusty; urgency=medium
+
+  * Use default file to enable auto upgrade
+
+ -- Simon Eisenmann <simon@struktur.de>  Tue, 19 Jul 2016 11:06:53 +0200
+
+nextcloud (9.0.52-1~strukturag+8) trusty; urgency=medium
+
+  * Patch maintenance mode
+
+ -- Simon Eisenmann <simon@struktur.de>  Tue, 19 Jul 2016 10:30:41 +0200
+
+nextcloud (9.0.52-1~strukturag+7) trusty; urgency=medium
+
+  * Move mta and mariadb dep to suggest
+
+ -- Simon Eisenmann <simon@struktur.de>  Mon, 18 Jul 2016 11:25:12 +0200
+
+nextcloud (9.0.52-1~strukturag+6) trusty; urgency=medium
+
+  * Make PHP mysql, pgsql and apcu suggests
+  * Allow occ to install even when ownCloud is there
+
+ -- Simon Eisenmann <simon@struktur.de>  Fri, 15 Jul 2016 09:56:50 +0200
+
+nextcloud (9.0.52-1~strukturag+5) trusty; urgency=medium
+
+  * Also depend on PHP meta package
+  * Fix remove postrm
+
+ -- Simon Eisenmann <simon@struktur.de>  Thu, 14 Jul 2016 11:46:07 +0200
+
+nextcloud (9.0.52-1~strukturag+4) trusty; urgency=medium
+
+  * Remove obsolete php-xml-parser dependency
+  * Install AUTHORS file
+  * Use explicit PHP package dependency
+  * Mark meta packages correctly
+
+ -- Simon Eisenmann <simon@struktur.de>  Thu, 14 Jul 2016 11:25:02 +0200
+
+nextcloud (9.0.52-1~strukturag+3) trusty; urgency=medium
+
+  * Move PHP dependencies to meta package
+
+ -- Simon Eisenmann <simon@struktur.de>  Thu, 14 Jul 2016 10:04:03 +0200
+
+nextcloud (9.0.52-1~strukturag+2) trusty; urgency=medium
+
+  * Break correct owncloud-server version
+  * Fix parameter in prerm
+
+ -- Simon Eisenmann <simon@struktur.de>  Wed, 13 Jul 2016 17:11:08 +0200
+
+nextcloud (9.0.52-1~strukturag+1) trusty; urgency=medium
+
+  * Initial Nextcloud package forked from ownCloud package 9.0.2-1~strukturag+4
+  * Imported Upstream version 9.0.52
+
+ -- Simon Eisenmann <simon@struktur.de>  Wed, 13 Jul 2016 15:18:37 +0200

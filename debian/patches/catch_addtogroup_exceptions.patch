@@ -1,0 +1,86 @@
+--- a/settings/Controller/UsersController.php
++++ b/settings/Controller/UsersController.php
+@@ -422,7 +422,20 @@
+ 					if(empty($group)) {
+ 						$group = $this->groupManager->createGroup($groupName);
+ 					}
+-					$group->addUser($user);
++					try {
++						$group->addUser($user);
++					} catch (\Exception $e) {
++						$message = $e->getMessage();
++						if (!$message) {
++							$message = $this->l10n->t('Unable to add user to group.');
++						}
++						return new DataResponse(
++							[
++								'message' => (string) $message,
++							],
++							Http::STATUS_FORBIDDEN
++						);
++					}
+ 				}
+ 			}
+ 			/**
+--- a/apps/provisioning_api/lib/Controller/UsersController.php
++++ b/apps/provisioning_api/lib/Controller/UsersController.php
+@@ -558,7 +558,15 @@
+ 		}
+ 
+ 		// Add user to group
+-		$group->addUser($targetUser);
++		try {
++			$group->addUser($targetUser);
++		} catch (\Exception $e) {
++			$message = $e->getMessage();
++			if (!$message) {
++				$message = $this->l10n->t('Unable to add user to group.');
++			}
++			throw new OCSForbiddenException((string) $message);
++		}
+ 		return new DataResponse();
+ 	}
+ 
+--- a/settings/js/users/users.js
++++ b/settings/js/users/users.js
+@@ -466,16 +466,31 @@
+ 							GroupList.decGroupCount(group);
+ 						}
+ 					},
+-					error: function() {
+-						if (add) {
+-							OC.Notification.show(t('settings', 'Unable to add user to group {group}', {
+-								group: group
+-							}));
+-						} else {
+-							OC.Notification.show(t('settings', 'Unable to remove user from group {group}', {
+-								group: group
+-							}));
++					error: function(xhr) {
++						var response = xhr.responseJSON || xhr.responseText;
++						if (typeof(response) === 'string') {
++							try {
++								response = JSON.parse(response);
++							} catch (err) {
++								console.error("Could not parse response", err);
++							}
+ 						}
++						var message;
++						if (response && response.ocs && response.ocs.meta) {
++							message = response.ocs.meta.message;
++						}
++						if (!message) {
++							if (add) {
++								message = t('settings', 'Unable to add user to group {group}', {
++									group: group
++								});
++							} else {
++								message = t('settings', 'Unable to remove user from group {group}', {
++									group: group
++								});
++							}
++						}
++						OC.Notification.show(message);
+ 					}
+ 				});
+ 			};

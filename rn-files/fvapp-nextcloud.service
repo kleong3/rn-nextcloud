@@ -1,0 +1,14 @@
+[Unit]
+Description=nextcloud application instance
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=
+Restart=on-failure
+Nice=18
+User=admin
+Group=admin
+
+[Install]
+WantedBy=multi-user.target

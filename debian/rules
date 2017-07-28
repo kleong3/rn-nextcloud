@@ -1,0 +1,50 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# (C) 2015 jw@owncloud.com
+# (C) 2015,2016 struktur AG <opensource@struktur.de>
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+SHELL=/bin/bash
+
+export WEBROOT=$(CURDIR)/debian/nextcloud-server/usr/lib/nextcloud/www
+export CONFIGROOT=$(CURDIR)/debian/nextcloud-server/etc/nextcloud
+export DATAROOT=$(CURDIR)/debian/nextcloud-server/var/lib/nextcloud/data
+
+%:
+	dh $@
+
+override_dh_install:
+	dh_install
+	ln -s /var/lib/nextcloud/data $(WEBROOT)/data
+	ln -s /etc/nextcloud $(WEBROOT)/config
+	cp -ra config/* $(CONFIGROOT)/
+	cp -a debian/autoconfig.php $(CONFIGROOT)/autoconfig.php
+	# Replace Nextcloud shipped CAs with system provided CAs provided by ca-certifiactes package.
+	rm -f $(WEBROOT)/resources/config/ca-bundle.crt
+	ln -s /etc/ssl/certs/ca-certificates.crt $(WEBROOT)/resources/config/ca-bundle.crt
+	# PHP specific occ console.
+	mkdir -p $(CURDIR)/debian/nextcloud-server-php7.0/usr/lib/nextcloud/www
+	cp -a debian/occ.php7.0 $(CURDIR)/debian/nextcloud-server-php7.0/usr/lib/nextcloud/www/occ
+	touch $(CURDIR)/debian/nextcloud-server-php7.0/usr/lib/nextcloud/nextcloud-server-php7.0
+	# Remove updatenotification app.
+	rm -rf $(CURDIR)/debian/nextcloud-server/usr/lib/nextcloud/www/apps/updatenotification
+	# Remove updater.
+	rm -rf $(CURDIR)/debian/nextcloud-server/usr/lib/nextcloud/www/updater
+
+override_dh_fixperms:
+	dh_fixperms -X var/lib/nextcloud/data -X etc/nextcloud
+	# chown at the end to ensure everything is chown'ed
+	# We must chown all apps folders, in each app, to be independent of installation order.
+	chown www-data:www-data    $(WEBROOT)/apps
+	chown www-data:www-data    $(WEBROOT)/assets
+	chown -R www-data:www-data $(WEBROOT)/themes
+	chown -R www-data:www-data $(CONFIGROOT)
+	# https://github.com/owncloud/core/issues/18222
+	chmod -R ug+rwx            $(CONFIGROOT)
+	chown -R www-data:www-data $(DATAROOT)
+
+override_dh_installcron:
+	dh_installcron
+	dh_installcron --name=nextcloud-server-php7-0
